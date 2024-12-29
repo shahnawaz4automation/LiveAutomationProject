@@ -53,7 +53,7 @@ public class TC_RF_001 {
 
 		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
 
-		//driver.quit();
+		driver.quit();
 	}
 	
 	public String generateNewEmail() { 
