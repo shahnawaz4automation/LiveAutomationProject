@@ -8,5 +8,6 @@ public class TC_RF_002 {
 	@Test
 	public void validateEmail() {
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 	}
 }
