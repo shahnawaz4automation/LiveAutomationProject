@@ -56,7 +56,6 @@ public class TC_RF_010 {
 		ImageDiff imgDifference =  imgDiff.makeDiff(expectedBImg, actualBImg);
 		
 		Assert.assertFalse(imgDifference.hasDiff());
-		
 	
 		driver.quit();
 		
