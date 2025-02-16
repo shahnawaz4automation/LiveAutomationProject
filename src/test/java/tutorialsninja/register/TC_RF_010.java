@@ -1,6 +1,5 @@
 package tutorialsninja.register;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,18 +19,18 @@ import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 public class TC_RF_010 {
-	
+
 	@Test
 	public void verifyRegisteringAccountUsingInvalidEmail() throws InterruptedException, IOException {
-		
+
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.get("https://tutorialsninja.com/demo");
-		
+
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
-		
+
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
 		driver.findElement(By.id("input-email")).sendKeys("amotoori");
@@ -41,27 +40,27 @@ public class TC_RF_010 {
 		driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).click();
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
-	
+
 		Thread.sleep(3000);
-		
-		File srcScreenshot1 = driver.findElement(By.xpath("//form[@class='form-horizontal']")).getScreenshotAs(OutputType.FILE);
-		FileHandler.copy(srcScreenshot1,new File(System.getProperty("user.dir")+"\\Screenshots\\sc1Actual.png"));
-		
+
+		File srcScreenshot1 = driver.findElement(By.xpath("//form[@class='form-horizontal']"))
+				.getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(srcScreenshot1, new File(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png"));
+
 		Thread.sleep(3000);
-		
-		BufferedImage actualBImg = ImageIO.read(new File(System.getProperty("user.dir")+"\\Screenshots\\sc1Actual.png"));
-		BufferedImage expectedBImg = ImageIO.read(new File(System.getProperty("user.dir")+"\\Screenshots\\sc1Expected.png"));
-		
+
+		BufferedImage actualBImg = ImageIO
+				.read(new File(System.getProperty("user.dir") + "\\Screenshots\\sc1Actual.png"));
+		BufferedImage expectedBImg = ImageIO
+				.read(new File(System.getProperty("user.dir") + "\\Screenshots\\sc1Expected.png"));
+
 		ImageDiffer imgDiff = new ImageDiffer();
-		ImageDiff imgDifference =  imgDiff.makeDiff(expectedBImg, actualBImg);
-		
+		ImageDiff imgDifference = imgDiff.makeDiff(expectedBImg, actualBImg);
+
 		Assert.assertFalse(imgDifference.hasDiff());
-	
+
 		driver.quit();
-		
+
 	}
-	
-	
-	
 
 }
