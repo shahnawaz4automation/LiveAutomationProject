@@ -3,8 +3,7 @@ package tutorialsninja.register;
 public class TC_RF_001 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Will start working on this from tomorrow");
 	}
 
 }
